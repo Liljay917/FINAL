@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1><u>POWER FITNESS CENTER</u></h1>
+    <title>POWER FITNESS CENTER</title>
+    <link href="aboutUs.css" rel="stylesheet" />
+    <link href="membership.css" rel="stylesheet" />
+    <link href="Photos.css" rel="stylesheet" />
+
+    <script>
+        function doClear() {
+            document.memberships.customer.value = "";
+            document.memberships.address.value = "";
+            document.memberships.city.value = "";
+            document.memberships.state.value = "";
+            document.memberships.zip.value = "";
+            document.memberships.phonenum.value = "";
+            document.memberships.email.value = "";
+            document.memberships.cardnum.value = "";
+            document.memberships.plan.value = "";
+
+            document.memberships.sizes[0].checked = false;
+            document.memberships.sizes[1].checked = false;
+            document.memberships.sizes[2].checked = false;
+            return;
+        }
+
+        function doSubmit() {
+            if (validateText() == false) {
+                alert("Required data missing in Step 1");
+                return;
+            }
+            if (validateRadio() == false) {
+                alert("Required data missing in Step 2");
+                return;
+            }
+
+            alert("Thank you for joining Planet Fitness Center");
+            return;
+        }
+
+        function validateText() {
+            var customer = document.memberships.customer.value;
+            if (customer.length == 0) return false;
+            var address = document.memberships.address.value;
+            if (address.length == 0) return false;
+            var city = document.memberships.city.value;
+            if (city.length == 0) return false;
+            var phone = document.memberships.phonenum.value;
+            if (phone.length == 0) return false;
+            var email = document.memberships.email.value;
+            if (email.length == 0) return false;
+            var cardnum = document.memberships.cardnum.value;
+            if (cardnum.length == 0) return false;
+            return true;
+        }
+
+        function validateRadio() {
+            var planOptions = document.memberships.plan;
+            for (var i = 0; i < planOptions.length; i++) {
+                if (planOptions[i].checked) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        
+        <nav>
+            <a id="navicon" href="#"><img src="" alt="" /></a>
+            <ul>
+                <li><a href="Index.html">About us</a></li>
+                <li><a href="membership.html">Memembership</a></li>
+                <li><a href="Photos.html">Photos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <form name="memberships">
+        <h1>SIGN UP</h1>
+        <p>
+            <h4>Fill out the form below to join us:</h4>
+            Name: &nbsp;&nbsp;&nbsp;<input name="customer" size="50" type="text"><br>
+            Address: <input name="address" size="50" type="text"><br>
+            City: &nbsp;&nbsp;&nbsp;<input name="city" size="15" type="text">
+            State: <input name="state" size="2" type="TEXT">
+            Zip: <input name="zip" size="5" type="text"><br>
+            Phone: &nbsp;&nbsp;<input name="phonenum" size="50" type="text"><br>
+            E-Mail:&nbsp;&nbsp;&nbsp;<input name="email" size="50" type="text"><br>
+            Card Number:&nbsp;&nbsp;&nbsp;<input name="cardnum" size="50" type="text"><br>
+        </p>
+        <p>
+            <h4>Select the membership plan that suits your style:</h4>
+            <input name="plan" type="radio" value="Basic">Basic
+            <input name="plan" type="radio" value="Peak">Peak
+            <input name="plan" type="radio" value="PeakFitness">Peak Fitness
+        </p>
+        <input type="button" value="Complete Sign Up" onClick="doSubmit()">
+        <input type="button" value="Cancel" onClick="doClear()">
+    </form>
+</body>
+
+</html>
